@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "paths": {
+      "something": ["./src"],
+      "@app/*": ["./src/modules/app/*"],
+      "@app": ["./src/modules/app/index"],
+      "@auth/*": ["./src/modules/auth/*"],
+      "@auth": ["./src/modules/auth/index"],
+      "@core/*": ["./src/modules/core/*"]
+    }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "@types"]
+}

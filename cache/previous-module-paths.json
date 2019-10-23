@@ -1,0 +1,7 @@
+{
+  "@app/*": ["./src/modules/app/*"],
+  "@app": ["./src/modules/app/index"],
+  "@auth/*": ["./src/modules/auth/*"],
+  "@auth": ["./src/modules/auth/index"],
+  "@core/*": ["./src/modules/core/*"]
+}

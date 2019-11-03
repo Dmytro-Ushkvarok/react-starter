@@ -16,7 +16,6 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "paths": {
-      "something": ["./src"],
       "@app/*": ["./src/modules/app/*"],
       "@app": ["./src/modules/app/index"],
       "@auth/*": ["./src/modules/auth/*"],

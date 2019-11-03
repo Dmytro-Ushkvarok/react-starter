@@ -4,6 +4,7 @@ import * as styles from './routes.scss';
 import { Route } from 'react-router-dom';
 import { Auth } from '@auth';
 
+
 /**
  * Renders Routes
  */

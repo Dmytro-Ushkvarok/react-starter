@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env webpack-dev-server --config ./webpack/webpack.server.js",
+    "start": "npm run update:module:paths && cross-env webpack-dev-server --config ./webpack/webpack.server.js",
     "build": "cross-env webpack --config ./webpack/webpack.prod.js",
     "test": "jest --coverage --config=\"./tests/config/jest.config.js\"",
     "test:watch": "jest --coverage --watch --config=\"./tests/config/jest.config.js\"",

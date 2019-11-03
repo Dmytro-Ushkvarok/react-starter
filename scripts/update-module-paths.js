@@ -12,17 +12,28 @@ const base = './src';
 /**
  * Modules for caching
  */
-let cache = require('../cache/previous-module-paths.json');
+let registered = [];
 
 /**
  * Clear old module paths
  */
 const clear = () => {
-  Object.keys(cache).map(key => {
-    delete config.compilerOptions.paths[key];
-  });
+  Object.entries(config.compilerOptions.paths)
+    .filter(([_, value]) =>
+      value.some(item => {
+        const isModule = item.match(/.*\/modules\/((?!(\/)).)*\/\*$/gi);
+        const isModuleRoot = item.match(/.*\/modules\/((?!(\/)).)*\/index$/gi);
 
-  cache = {};
+        return isModule || isModuleRoot;
+      })
+    )
+    .map(([key]) => {
+      const isRegistered = registered.some(one => one == key);
+
+      if (!isRegistered) {
+        delete config.compilerOptions.paths[key];
+      }
+    });
 };
 
 /**
@@ -45,28 +56,22 @@ const writePaths = (path = []) => {
       .replace(/\/modules/gi, '');
     const content = fs.readdirSync(depth);
 
-    config.compilerOptions.paths[root + '/*'] = cache[root + '/*'] = [
-      depth + '/*'
-    ];
+    config.compilerOptions.paths[root + '/*'] = [depth + '/*'];
+
+    registered.push(root + '/*');
 
     if (content.includes('index.ts') || content.includes('index.tsx')) {
-      config.compilerOptions.paths[root] = cache[root] = [depth + '/index'];
+      config.compilerOptions.paths[root] = [depth + '/index'];
+
+      registered.push(root);
     }
   }
 };
 
-clear();
 writePaths();
 
-/**
- * Rewrite files
- */
-fs.writeFileSync(
-  './cache/previous-module-paths.json',
-  prettier.format(JSON.stringify(cache), {
-    parser: 'json'
-  })
-);
+clear();
+
 fs.writeFileSync(
   './tsconfig.json',
   prettier.format(JSON.stringify(config), {

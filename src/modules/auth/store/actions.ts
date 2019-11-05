@@ -1,8 +1,18 @@
 import { make } from 'redux-chill';
+import { makeSubmitStage } from '@core/shared/formik';
 
-const get = make('[auth] get')
+/**
+ * Login
+ */
+const login = make('[auth] login')
   .stage('success')
-  .stage('failure')
-  .build((id: number) => id);
+  .build(makeSubmitStage());
 
-export { get };
+/**
+ * Register
+ */
+const register = make('[auth] register')
+  .stage('success')
+  .build(makeSubmitStage());
+
+export { login, register };

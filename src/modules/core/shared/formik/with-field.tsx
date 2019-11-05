@@ -3,12 +3,23 @@ import * as React from 'react';
 import { get } from 'object-path';
 import { useCallback } from 'react';
 import { FormikStatus } from './status';
+import { ComponentType } from 'enzyme';
+
+type Props = {
+  value?: any;
+  error?: any;
+  isError?: any;
+  onTouch?: any;
+  onChange?: any;
+  touched?: any;
+  disabled?: any;
+};
 
 /**
  * Wrap component with field data provided
  */
-function withField<P>(source: P) {
-  const Source: any = source;
+function withField<P extends Props>(source: ComponentType<P>) {
+  const Result: any = source;
   const result: React.FC<{ name: string }> = props => {
     const { name } = props;
     const {
@@ -36,9 +47,8 @@ function withField<P>(source: P) {
       },
       [name, setFieldTouched]
     );
-
     return (
-      <Source
+      <Result
         value={value}
         error={error}
         isError={isError}
@@ -51,7 +61,9 @@ function withField<P>(source: P) {
     );
   };
 
-  return result;
+  return (result as any) as ComponentType<
+    { name: string } & Omit<P, keyof Props> & Partial<Pick<P, keyof Props>>
+  >;
 }
 
 export { withField };

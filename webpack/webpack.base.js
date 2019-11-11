@@ -83,9 +83,9 @@ const base = {
       {
         test: /\.(ts|tsx)$/,
         use: [
-          use('awesome-typescript-loader', {
-            useCache: true,
-            cacheDirectory: root('cache/awcache')
+          use('ts-loader', {
+            // useCache: true,
+            // cacheDirectory: root('cache/awcache')
           })
         ],
         exclude: /node_modules/

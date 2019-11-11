@@ -17,7 +17,7 @@ const Auth: React.FC<AuthProps> = ({}) => (
     <div className={styles.auth}>
       <Formik
         initialValues={{ email: '', password: '' }}
-        onSubmit={(...payload) => login(payload, null)}
+        onSubmit={payload => {}}
       >
         {() => (
           <Form>

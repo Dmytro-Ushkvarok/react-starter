@@ -4,6 +4,7 @@ import * as React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { createBrowserHistory } from 'history';
 import { Routes } from '@app/routes';
+import { put } from 'redux-saga/effects';
 
 const history = createBrowserHistory();
 const setup = () => {

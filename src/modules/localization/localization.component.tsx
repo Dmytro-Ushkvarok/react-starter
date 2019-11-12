@@ -3,7 +3,7 @@ import { LocalizationProps } from './localization.props';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
-import { Suspense, createContext } from 'react';
+import { createContext } from 'react';
 import { rtlLanguages, Direction } from './models';
 
 /**
@@ -43,11 +43,9 @@ const useDirection = () => {
  * Renders Localization
  */
 const Localization: React.FC<LocalizationProps> = ({ children }) => (
-  <Suspense fallback={'Loading...'}>
-    <I18nextProvider i18n={i18next}>
-      <DirectionProvider>{children}</DirectionProvider>
-    </I18nextProvider>
-  </Suspense>
+  <I18nextProvider i18n={i18next}>
+    <DirectionProvider>{children}</DirectionProvider>
+  </I18nextProvider>
 );
 
 export { Localization, useDirection };

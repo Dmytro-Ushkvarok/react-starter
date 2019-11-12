@@ -24,9 +24,6 @@ const Content: React.FC = ({ children }) => {
   return <React.Fragment>{children}</React.Fragment>;
 };
 
-
-
-
 /**
  * Renders App
  */

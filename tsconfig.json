@@ -20,7 +20,10 @@
       "@app": ["./src/modules/app/index"],
       "@auth/*": ["./src/modules/auth/*"],
       "@auth": ["./src/modules/auth/index"],
-      "@core/*": ["./src/modules/core/*"]
+      "@core/*": ["./src/modules/core/*"],
+      "@localization": ["./src/modules/localization/index"],
+      "@localization/*": ["./src/modules/localization/*"],
+      "@router/*": ["./src/modules/router/*"]
     }
   },
   "include": ["./src/**/*"],

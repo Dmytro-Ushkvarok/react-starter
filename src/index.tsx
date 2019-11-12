@@ -1,16 +1,13 @@
 import '@app/styles/global.scss';
 import { App } from '@app';
+import { Routes } from '@app/routes';
+import { createStore } from '@app/store';
+import { createBrowserHistory } from 'history';
 import * as React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-import { createBrowserHistory } from 'history';
-import { Routes } from '@app/routes';
-import { put } from 'redux-saga/effects';
+import { localize } from '@localization/i18n';
 
-import { createStore } from '@app/store';
-import { initReactI18next } from 'react-i18next';
-import i18next from 'i18next';
-
-i18next.use(initReactI18next);
+localize();
 
 const history = createBrowserHistory();
 const store = createStore(history);

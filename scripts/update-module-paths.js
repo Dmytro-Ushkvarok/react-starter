@@ -56,15 +56,15 @@ const writePaths = (path = []) => {
       .replace(/\/modules/gi, '');
     const content = fs.readdirSync(depth);
 
-    config.compilerOptions.paths[root + '/*'] = [depth + '/*'];
-
-    registered.push(root + '/*');
-
     if (content.includes('index.ts') || content.includes('index.tsx')) {
       config.compilerOptions.paths[root] = [depth + '/index'];
 
       registered.push(root);
     }
+
+    config.compilerOptions.paths[root + '/*'] = [depth + '/*'];
+
+    registered.push(root + '/*');
   }
 };
 

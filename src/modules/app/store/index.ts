@@ -3,7 +3,7 @@ import { createStore as reduxCreateStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { History } from 'history';
 import { run } from 'redux-chill';
-import { app } from './reducer';
+import { app, State } from './reducer';
 import { sagas } from './sagas';
 import { init } from '@router/store';
 import { setupLocalization } from '@localization/store';
@@ -33,9 +33,8 @@ const createStore = (history: History) => {
   run(sagaMiddleware, sagas, context);
 
   store.dispatch(init(history.location));
-  store.dispatch(setupLocalization('en-us'));
 
   return store;
 };
 
-export { Context, createStore };
+export { Context, State, createStore };

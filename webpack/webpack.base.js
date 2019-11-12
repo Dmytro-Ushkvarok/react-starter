@@ -6,6 +6,8 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 /**
  * Plugins
@@ -84,8 +86,7 @@ const base = {
         test: /\.(ts|tsx)$/,
         use: [
           use('ts-loader', {
-            // useCache: true,
-            // cacheDirectory: root('cache/awcache')
+            // transpileOnly: true
           })
         ],
         exclude: /node_modules/
@@ -114,6 +115,12 @@ const base = {
     new ContextReplacementPlugin(/moment[\/\\]locale$/, /ru|en/),
     new OccurrenceOrderPlugin(true),
     new FriendlyErrorsWebpackPlugin(),
+    // new ForkTsCheckerWebpackPlugin(),
+    // new ForkTsCheckerNotifierWebpackPlugin({
+    //   title: 'TypeScript',
+    //   silent: false,
+    //   async: false
+    // }),
     new SimpleProgressPlugin({
       progressOptions: {
         clear: true

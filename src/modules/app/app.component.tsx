@@ -11,6 +11,7 @@ const App: React.FC<AppProps> = ({ children, history, store }) => {
   React.useEffect(() => {
     console.log('CDM');
   }, []);
+
   return (
     <Provider store={store}>
       <Router history={history}>

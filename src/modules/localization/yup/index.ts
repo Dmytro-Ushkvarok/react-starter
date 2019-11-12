@@ -25,37 +25,37 @@ const withTranslation = (source: { [x: string]: string | Function }) => {
  */
 yup.setLocale({
   mixed: withTranslation({
-    required: 'errors.mixed.required',
-    default: 'errors.mixed.default',
-    oneOf: 'errors.mixed.oneOf',
-    notOneOf: 'errors.mixed.notOneOf'
+    required: 'yup.mixed.required',
+    default: 'yup.mixed.default',
+    oneOf: 'yup.mixed.oneOf',
+    notOneOf: 'yup.mixed.notOneOf'
   }),
   string: withTranslation({
-    length: 'errors.string.length',
-    min: 'errors.string.min',
-    max: 'errors.string.max',
-    matches: 'errors.string.matches',
-    email: 'errors.string.email',
-    url: 'errors.string.url',
-    trim: 'errors.string.trim',
-    lowercase: 'errors.string.lowercase',
-    uppercase: 'errors.string.uppercase'
+    length: 'yup.string.length',
+    min: 'yup.string.min',
+    max: 'yup.string.max',
+    matches: 'yup.string.matches',
+    email: 'yup.string.email',
+    url: 'yup.string.url',
+    trim: 'yup.string.trim',
+    lowercase: 'yup.string.lowercase',
+    uppercase: 'yup.string.uppercase'
   }),
   number: withTranslation({
-    min: 'errors.number.min',
-    max: 'errors.number.max',
-    lessThan: 'errors.number.lessThan',
-    moreThan: 'errors.number.moreThan',
-    positive: 'errors.number.positive',
-    negative: 'errors.number.negative',
-    integer: 'errors.number.integer'
+    min: 'yup.number.min',
+    max: 'yup.number.max',
+    lessThan: 'yup.number.lessThan',
+    moreThan: 'yup.number.moreThan',
+    positive: 'yup.number.positive',
+    negative: 'yup.number.negative',
+    integer: 'yup.number.integer'
   }),
   date: withTranslation({
-    min: 'errors.date.min',
-    max: 'errors.date.max'
+    min: 'yup.date.min',
+    max: 'yup.date.max'
   }),
   array: withTranslation({
-    min: 'errors.array.min',
-    max: 'errors.array.max'
+    min: 'yup.array.min',
+    max: 'yup.array.max'
   })
 });

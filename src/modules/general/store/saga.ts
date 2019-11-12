@@ -1,7 +1,7 @@
-import { Saga } from 'redux-chill';
-import { startup } from './actions';
-import { put, take } from 'redux-saga/effects';
 import { setupLocalization } from '@localization/store';
+import { Saga } from 'redux-chill';
+import { put, take } from 'redux-saga/effects';
+import { startup } from './actions';
 
 /**
  * General app methods

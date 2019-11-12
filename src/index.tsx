@@ -1,4 +1,5 @@
 import '@app/styles/global.scss';
+import '@localization/yup';
 import { App } from '@app';
 import { Routes } from '@app/routes';
 import { createStore } from '@app/store';

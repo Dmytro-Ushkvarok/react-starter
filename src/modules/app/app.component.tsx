@@ -12,10 +12,11 @@ import { startup } from '@general/store';
  * App content
  */
 const Content: React.FC = ({ children }) => {
-  const { isReady } = useSelector((state: State) => state.general);
   const dispatch = useDispatch();
+  const { isReady } = useSelector((state: State) => state.general);
+
   useEffect(() => {
-    dispatch(startup(null));
+    dispatch(startup());
   }, []);
 
   if (!isReady) return null;
@@ -31,7 +32,7 @@ const App: React.FC<AppProps> = ({ children, history, store }) => (
     <Content>
       <Localization>
         <Router history={history}>
-          <div className={styles.app}>{children}</div>
+          <div>{children}</div>
         </Router>
       </Localization>
     </Content>

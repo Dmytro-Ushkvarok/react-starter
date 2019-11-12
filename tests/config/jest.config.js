@@ -1,10 +1,11 @@
 const tsPaths = require('tsconfig-paths-jest')(require('../../tsconfig.json'));
 
 module.exports = {
+  rootDir: '../..',
   preset: 'ts-jest',
   collectCoverage: true,
-  coverageReporters: ['html', 'lcov', 'jest-junit'],
-  setupFilesAfterEnv: ['<rootDir>tests/enzyme.ts'],
+  coverageReporters: ['html', 'lcov'],
+  setupFilesAfterEnv: ['<rootDir>/tests/config/enzyme.js'],
   globals: {
     'ts-jest': {
       diagnostics: {

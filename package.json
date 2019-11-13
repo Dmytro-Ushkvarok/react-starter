@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run update:module:paths && cross-env webpack-dev-server --config ./webpack/webpack.server.js",
-    "build": "cross-env webpack --config ./webpack/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
     "test": "jest --coverage --config=\"./tests/config/jest.config.js\"",
     "test:watch": "jest --coverage --watch --config=\"./tests/config/jest.config.js\"",
     "e2e": "",
@@ -99,7 +99,8 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
     "webpack-merge": "^4.2.2",
-    "webpack-simple-progress-plugin": "0.0.4"
+    "webpack-simple-progress-plugin": "0.0.4",
+    "webpack-visualizer-plugin": "^0.1.11"
   },
   "husky": {
     "hooks": {

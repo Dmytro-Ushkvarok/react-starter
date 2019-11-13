@@ -1,10 +1,12 @@
 const { images, entry, root } = require('./webpack');
 const { base } = require('./webpack.base');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const merge = require('webpack-merge');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+const Visualizer = require('webpack-visualizer-plugin');
+
 /**
  * Prod configuration
  */
@@ -29,12 +31,12 @@ module.exports = merge(base, {
     minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [root('dist')]
     }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      reportFilename: '../report/index.html'
+    new Visualizer({
+      filename: root('report/stats.html')
     })
   ]
 });

@@ -26,8 +26,25 @@ const production = process.env.NODE_ENV === 'production';
 /**
  * Get enviroment
  */
-const enviroment = (name = 'test') =>
-  merge(require(`../config/${name}.json`), require('../config/local.json'));
+const enviroment = () => {
+  const name = process.env.config || 'test';
+
+  return merge(
+    require(`../config/${name}.json`),
+    require('../config/local.json')
+  );
+};
+
+/**
+ * Add process env prefix
+ */
+const toProcessEnv = source =>
+  Object.entries(source).reduce((result, [key, value]) => {
+    return {
+      ...result,
+      [`process.env.${key}`]: value
+    };
+  }, {});
 
 /**
  * Loader for image files
@@ -57,4 +74,4 @@ const images = ({ optimize = true } = {}) => ({
   ]
 });
 
-module.exports = { root, entry, images, use, production, enviroment };
+module.exports = { root, entry, images, use, production, enviroment, toProcessEnv };

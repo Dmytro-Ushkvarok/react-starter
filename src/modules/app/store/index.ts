@@ -3,17 +3,11 @@ import { createStore as reduxCreateStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { History } from 'history';
 import { run } from 'redux-chill';
-import { app, State } from './reducer';
+import { app } from './reducer';
 import { sagas } from './sagas';
 import { init } from '@router/store';
 import { setupLocalization } from '@localization/store';
-
-/**
- * Sagas context
- */
-type Context = {
-  history: History;
-};
+import { Context } from './context';
 
 /**
  * Create redux store
@@ -37,4 +31,4 @@ const createStore = (history: History) => {
   return store;
 };
 
-export { Context, State, createStore };
+export { createStore };

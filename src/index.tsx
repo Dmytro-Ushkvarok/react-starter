@@ -14,7 +14,6 @@ const history = createBrowserHistory();
 const store = createStore(history);
 
 const setup = () => {
-  console.log('setup');
   render(
     <App store={store} history={history}>
       <Routes />
@@ -25,10 +24,10 @@ const setup = () => {
 
 setup();
 
-if (module.hot) {
-  module.hot.addDisposeHandler(() => {
-    console.log('dispose');
-    unmountComponentAtNode(document.getElementById('app'));
-  });
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.addDisposeHandler(() => {
+//     console.log('dispose');
+//     unmountComponentAtNode(document.getElementById('app'));
+//   });
+//   module.hot.accept();
+// }

@@ -14,9 +14,4 @@ const app = combineReducers({
   general
 });
 
-/**
- * App state
- */
-type State = ReturnType<typeof app>;
-
-export { State, app };
+export { app };

@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { AppProps } from './app.props';
-import { Router } from 'react-router-dom';
-import * as styles from './app.scss';
-import { Provider, useSelector, useDispatch } from 'react-redux';
-import { Localization } from '@localization';
-import { State } from './store';
-import { ReactNode, useEffect } from 'react';
 import { startup } from '@general/store';
+import { Localization } from '@localization';
+import * as React from 'react';
+import { useEffect } from 'react';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Router } from 'react-router-dom';
+import { AppProps } from './app.props';
+import { State } from './store/state';
 
 /**
  * App content

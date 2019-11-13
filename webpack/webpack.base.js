@@ -1,6 +1,12 @@
 const { DefinePlugin, optimize, ContextReplacementPlugin } = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const { root, use, production, enviroment } = require('./webpack');
+const {
+  toProcessEnv,
+  root,
+  use,
+  production,
+  enviroment
+} = require('./webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
@@ -111,15 +117,14 @@ const base = {
       // minify: production
     }),
     // TODO: nail cmd argument here
-    new DefinePlugin(enviroment()),
-    new ContextReplacementPlugin(/moment[\/\\]locale$/, /ru|en/),
+    new DefinePlugin(toProcessEnv(enviroment())),
+    new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     new OccurrenceOrderPlugin(true),
     new FriendlyErrorsWebpackPlugin(),
     // new ForkTsCheckerWebpackPlugin(),
     // new ForkTsCheckerNotifierWebpackPlugin({
     //   title: 'TypeScript',
-    //   silent: false,
-    //   async: false
+    //   alwaysNotify: true
     // }),
     new SimpleProgressPlugin({
       progressOptions: {

@@ -17,6 +17,7 @@ const setup = () => {
 
 
 
+  
   console.log("setup");
   render(
     <App store={store} history={history}>

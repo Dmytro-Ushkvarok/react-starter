@@ -14,11 +14,7 @@ const history = createBrowserHistory();
 const store = createStore(history);
 
 const setup = () => {
-
-
-
-  
-  console.log("setup");
+  console.log('setup');
   render(
     <App store={store} history={history}>
       <Routes />

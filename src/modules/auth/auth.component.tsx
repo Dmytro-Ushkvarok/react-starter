@@ -11,6 +11,7 @@ import { Route } from 'react-router-dom';
  */
 const Auth: React.FC<AuthProps> = ({}) => (
   <div className={styles.auth}>
+    <div id='test' />
     <Route path='/login' component={Login} />
   </div>
 );

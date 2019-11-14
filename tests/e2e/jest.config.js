@@ -1,23 +1,11 @@
 module.exports = {
   preset: 'jest-puppeteer',
-  collectCoverage: true,
-  coverageReporters: ['html', 'lcov', 'jest-junit'],
-  setupFilesAfterEnv: ['<rootDir>tests/enzyme.ts'],
-  globals: {
-    'ts-jest': {
-      diagnostics: {
-        warnOnly: true
-      }
-    }
+  transform: {
+    '^.+\\.ts?$': 'ts-jest'
   },
-  testMatch: ['**/tests/e2e/**/*.(spec|test).[jt]s?(x)'],
-  testPathIgnorePatterns: [
-    '<rootDir>/webpack/',
-    '<rootDir>/env/',
-    '<rootDir>/tests/',
-    '<rootDir>/src/'
-  ],
-  moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy'
-  }
+  testMatch: ['./**/*.(spec|test).[jt]s?(x)'],
+  testPathIgnorePatterns: ['<rootDir>/webpack/', '<rootDir>/src/'],
+  globalSetup: './setup.js',
+  globalTeardown: './teardown.js',
+  testEnvironment: './environment.js'
 };
